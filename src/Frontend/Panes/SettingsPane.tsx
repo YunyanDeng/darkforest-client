@@ -11,7 +11,7 @@ import { Green, Red } from '../Components/Text';
 import Viewport, { getDefaultScroll } from '../Game/Viewport';
 import { useAccount, useUIManager } from '../Utils/AppHooks';
 import { useEmitterValue } from '../Utils/EmitterHooks';
-import { BooleanSetting, MultiSelectSetting, Setting } from '../Utils/SettingsHooks';
+import { BooleanSetting, MultiSelectSetting, Setting, useSetting} from '../Utils/SettingsHooks';
 import { ModalHook, ModalName, ModalPane } from '../Views/ModalPane';
 
 const SCROLL_MIN = 0.0001 * 10000;
@@ -59,6 +59,8 @@ export function SettingsPane({
   const uiManager = useUIManager();
   const account = useAccount(uiManager);
   const gasPrices = useEmitterValue(ethConnection.gasPrices$, ethConnection.getAutoGasPrices());
+
+  const [customGasPrice, setGasPrice] = useSetting(uiManager, Setting.GasFeeGwei);
 
   const [rpcUrl, setRpcURL] = useState<string>(ethConnection.getRpcEndpoint());
   const onChangeRpc = () => {
@@ -230,6 +232,15 @@ export function SettingsPane({
               `fast auto (~${gasPrices.fast} gwei)`,
             ]}
           />
+        </Section>
+
+        <Section>
+          <SectionHeader>Manual Gas Price</SectionHeader>
+          <Spacer height={8} />
+          Current Gas Price: {customGasPrice} gwei
+          <Spacer height={8} />
+          <Input wide value={customGasPrice} onChange={(e) => setGasPrice(e.target.value)} />
+          <Spacer height={8} />
         </Section>
 
         <Section>

@@ -1,0 +1,13 @@
+diff --git a/node_modules/@darkforest_eth/network/dist/TxExecutor.js b/node_modules/@darkforest_eth/network/dist/TxExecutor.js
+index b50e1fb..28e5b97 100644
+--- a/node_modules/@darkforest_eth/network/dist/TxExecutor.js
++++ b/node_modules/@darkforest_eth/network/dist/TxExecutor.js
+@@ -101,7 +101,7 @@ class TxExecutor {
+             logEvent.user_address = this.ethConnection.getAddress();
+             this.afterTransaction && this.afterTransaction(txRequest, logEvent);
+         };
+-        this.queue = new ThrottledConcurrentQueue_1.ThrottledConcurrentQueue(3, 1000, 1);
++        this.queue = new ThrottledConcurrentQueue_1.ThrottledConcurrentQueue(10, 1000, 10);
+         this.lastTransactionTimestamp = Date.now();
+         this.ethConnection = ethConnection;
+         this.gasSettingProvider = gasSettingProvider;
