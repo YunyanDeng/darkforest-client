@@ -117,7 +117,7 @@ class EthConnection extends EventEmitter {
     const isProd = process.env.NODE_ENV === 'production';
     const contractAddress = isProd
       ? require('../utils/prod_contract_addr').contractAddress
-      : require('../utils/local_contract_addr').contractAddress;
+      : require('../utils/prod_contract_addr').contractAddress;
 
     return this.loadContract(contractAddress, contractABI);
   }
@@ -130,7 +130,7 @@ class EthConnection extends EventEmitter {
     const isProd = process.env.NODE_ENV === 'production';
     const whitelistAddress = isProd
       ? require('../utils/prod_contract_addr').whitelistContract
-      : require('../utils/local_contract_addr').whitelistContract;
+      : require('../utils/prod_contract_addr').whitelistContract;
 
     return this.loadContract(whitelistAddress, whitelistABI);
   }
