@@ -11,7 +11,7 @@ export function LandingPageRoundArt() {
       <ImgContainer>
         <LandingPageRoundArtImg src={'/public/round_art/guildw-round1.png'} />
         <Smaller>
-          <Text>Art by</Text> <Link to='https://twitter.com/PLAZAES'>@PLAZAES</Link>{' '}
+          <Text>Art by</Text> <Link to='https://twitter.com/PLAZAES_eth'>@PLAZAES</Link>{' '}
         </Smaller>
       </ImgContainer>
     </Container>
